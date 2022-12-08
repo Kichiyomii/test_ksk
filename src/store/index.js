@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import dataModule from '@/store/mainData';
+import dataModule from './mainData';
 
 Vue.use(Vuex);
 

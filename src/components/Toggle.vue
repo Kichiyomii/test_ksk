@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="toggle">
 
   </div>
 </template>
@@ -11,5 +11,10 @@ export default {
 </script>
 
 <style scoped>
+.toggle {
+  width: 80px;
+  height: 40px;
+  background: black;
+}
 
 </style>

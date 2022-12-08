@@ -1,20 +1,29 @@
+import getStaticData from '../../api/main_data';
+
 export default {
   state: {
     orders: [],
+    type: {
+      Pickup: 'Самовывоз',
+      Delivery: 'Курьерская доставка',
+      'Pick-point': 'Доставка в пункт выдачи',
+    },
   },
   mutations: {
-    setPhotos(state, payload) {
-      state.photos = payload;
+    setOrders(state, payload) {
+      state.orders = payload;
     },
   },
   getters: {
-    getAllPhotos(state) {
-      return state.photos;
+    getOrders(state) {
+      return state.orders;
     },
   },
   actions: {
-    fetchPhotos(context) {
-
+    fetchOrders(context) {
+      getStaticData().then((response) => {
+        context.commit('setOrders', response.data);
+      });
     },
   },
 };

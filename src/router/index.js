@@ -7,13 +7,13 @@ const routes = [
   {
     path: '/table',
     name: 'Table',
-    component: () => import(/* webpackChunkName: "about" */ '@/pages/Table.vue'),
+    component: () => import('@/pages/Table.vue'),
   },
 
   {
     path: '/widget',
     name: 'Widget',
-    component: () => import(/* webpackChunkName: "about" */ '@/pages/Table.vue'),
+    component: () => import('@/pages/Table.vue'),
   },
 ];
 
