@@ -1,5 +1,5 @@
 const getStaticData = async () => {
-  await new Promise((res) => setTimeout(res, 20));
+  await new Promise((res) => setTimeout(res, 0));
   return {
     status: 200,
     data: [

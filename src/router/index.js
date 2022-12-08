@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Table from '@/pages/Table';
+import Widget from '@/pages/Widget';
 
 Vue.use(VueRouter);
 
@@ -7,13 +9,13 @@ const routes = [
   {
     path: '/table',
     name: 'Table',
-    component: () => import('@/pages/Table.vue'),
+    component: Table,
   },
 
   {
     path: '/widget',
     name: 'Widget',
-    component: () => import('@/pages/Table.vue'),
+    component: Widget,
   },
 ];
 

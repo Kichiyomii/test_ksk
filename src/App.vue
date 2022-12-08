@@ -6,17 +6,14 @@
 </template>
 
 <script>
-import Header from '@/layouts/Header.vue';
-import Default from '@/layouts/Default.vue';
+import Header from '@/layouts/Header';
+import Default from '@/layouts/Default';
 
 export default {
   name: 'App',
   components: {
     Header,
     Default,
-  },
-  mounted() {
-    this.$store.dispatch('fetchOrders');
   },
 };
 </script>

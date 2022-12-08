@@ -3,11 +3,11 @@ import getStaticData from '../../api/main_data';
 export default {
   state: {
     orders: [],
-    type: {
-      Pickup: 'Самовывоз',
-      Delivery: 'Курьерская доставка',
-      'Pick-point': 'Доставка в пункт выдачи',
-    },
+    types: [
+      { id: 'Pickup', name: 'Самовывоз' },
+      { id: 'Delivery', name: 'Курьерская доставка' },
+      { id: 'Pick-point', name: 'Доставка в пункт выдачи' },
+    ],
   },
   mutations: {
     setOrders(state, payload) {

@@ -1,12 +1,12 @@
 <template>
 <div class="main">
-  <Filters/>
+  <Filters :filter-value="filterValue"/>
   <div class="main__container">
     <div class="main__sortcontainer">
-      <Sort/>
+      <Sort :sort-value="sortValue"/>
       <Toggle class="main__toggle"/>
     </div>
-    <div style="width: 100%; height: 100px; background-color: blue;"></div>
+    <router-view :orders="searchOrders"/>
   </div>
 </div>
 </template>
@@ -23,7 +23,46 @@ export default {
     Sort,
     Toggle,
   },
-
+  data() {
+    return {
+      filterValue: {
+        text: '',
+        select: '',
+      },
+      sortValue: {
+        sort: '',
+      },
+    };
+  },
+  async mounted() {
+    await this.$store.dispatch('fetchOrders');
+  },
+  computed: {
+    orders() {
+      return this.$store.getters.getOrders;
+    },
+    sortedOrders() {
+      return [...this.orders].sort((order1, order2) => {
+        if (this.sortValue.sort === 'up') {
+          return order1.number.localeCompare(order2.number);
+        }
+        if (this.sortValue.sort === 'down') {
+          return order2.number.localeCompare(order1.number);
+        }
+        return this.orders;
+      });
+    },
+    searchOrders() {
+      return this.sortedOrders.filter(
+        (order) => {
+          console.log(this.filterValue.select, this.filterValue.text);
+          return order.number.includes(this.filterValue.text)
+            && this.filterValue.select === ''
+            ? true : order.type === this.filterValue.select;
+        },
+      );
+    },
+  },
 };
 </script>
 
@@ -31,7 +70,7 @@ export default {
 .main {
   display: flex;
   height: 100%;
-  padding: 0px 116px;
+  padding: 0 116px;
   &__container {
     width: 100%;
   }
