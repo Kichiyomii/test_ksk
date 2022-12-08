@@ -36,6 +36,10 @@ export default {
     };
   },
   async mounted() {
+    console.log(this.$route.name);
+    if (this.$route.name !== 'Table' || this.$route.name !== 'Widget') {
+      this.$router.push('/table');
+    }
     await this.$store.dispatch('fetchOrders');
   },
   computed: {

@@ -1,10 +1,16 @@
 <template>
   <div class="toggle">
-    <div @click="$router.push({ path: '/table', replace: true })">
+    <div
+      @click="$router.push({ path: '/table', replace: true })"
+      :class="this.$route.name.includes('Table') ? 'toggle__active' : ''"
+    >
       <img src="../assets/icons/table.svg"/>
     </div>
     <div class="divider"/>
-    <div @click="$router.push({ path: '/widget', replace: true })" class="toggle__widget">
+    <div
+      @click="$router.push({ path: '/widget', replace: true })"
+      :class="this.$route.name.includes('Widget') ? 'toggle__active' : ''"
+      class="toggle__widget">
       <img src="../assets/icons/widget.svg"/>
     </div>
   </div>
@@ -13,6 +19,9 @@
 <script>
 export default {
   name: 'Toggle',
+  mounted() {
+    console.log(this.$route);
+  },
 };
 </script>
 
@@ -28,6 +37,9 @@ export default {
   cursor: pointer;
   &__widget {
     padding-bottom: 3px;
+  }
+  &__active {
+    background: #E5E9EC;
   }
 }
 

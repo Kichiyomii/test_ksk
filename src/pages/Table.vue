@@ -75,7 +75,7 @@ export default {
     & tr {
       position: relative;
       & td {
-        padding: 12px 0;
+        padding: 12px 16px;
         border-bottom: 1px solid #E6E6E6;
         position: relative;
       }
