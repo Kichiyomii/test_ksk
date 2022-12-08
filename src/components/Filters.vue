@@ -20,6 +20,7 @@
       >
         <span v-text="option.name"/>
       </option>
+      <option value="">Отчистить</option>
     </select>
   </div>
 </div>
@@ -37,7 +38,7 @@ export default {
   },
   data() {
     return {
-      options: this.$store.state.dataModule.types,
+      options: this.$store.getters.getTypes,
     };
   },
   methods: {

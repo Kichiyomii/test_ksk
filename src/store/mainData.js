@@ -13,10 +13,16 @@ export default {
     setOrders(state, payload) {
       state.orders = payload;
     },
+    deleteOrder(state, id) {
+      state.orders = state.orders.filter((o) => o.id !== id);
+    },
   },
   getters: {
     getOrders(state) {
       return state.orders;
+    },
+    getTypes(state) {
+      return state.types;
     },
   },
   actions: {
@@ -24,6 +30,9 @@ export default {
       getStaticData().then((response) => {
         context.commit('setOrders', response.data);
       });
+    },
+    deleteOrder({ commit }, id) {
+      commit('deleteOrder', id);
     },
   },
 };

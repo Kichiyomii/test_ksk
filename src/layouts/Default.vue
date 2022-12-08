@@ -6,7 +6,7 @@
       <Sort :sort-value="sortValue"/>
       <Toggle class="main__toggle"/>
     </div>
-    <router-view :orders="searchOrders"/>
+    <router-view :types="types" :orders="searchOrders"/>
   </div>
 </div>
 </template>
@@ -32,6 +32,7 @@ export default {
       sortValue: {
         sort: '',
       },
+      types: this.$store.getters.getTypes,
     };
   },
   async mounted() {
@@ -55,10 +56,11 @@ export default {
     searchOrders() {
       return this.sortedOrders.filter(
         (order) => {
-          console.log(this.filterValue.select, this.filterValue.text);
+          if (this.filterValue.select === '') {
+            return order.number.includes(this.filterValue.text);
+          }
           return order.number.includes(this.filterValue.text)
-            && this.filterValue.select === ''
-            ? true : order.type === this.filterValue.select;
+            && order.type === this.filterValue.select;
         },
       );
     },
