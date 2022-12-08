@@ -3,7 +3,8 @@
 Постарался максимально декомпозировать разделил по папкам, жаль не поддерживает глобальные scss и что бы его юзать пришлось бы импортировать, что не очень удобно
 
 Решил использовать momentJs, что бы не городить такие конструкции:
- // function dateFormat(inputDate, format) {
+
+    function dateFormat(inputDate, format) {
     //parse the input date
     const date = new Date(inputDate);
 
@@ -26,7 +27,8 @@
     format = format.replace("dd", day.toString().padStart(2,"0"));
 
     return format;
-// }
+
+
 
 Решил сделать сортировку и фильтрация вне самого стора, что бы не трогать глобальное хранилище
 
